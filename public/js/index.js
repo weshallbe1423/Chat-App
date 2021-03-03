@@ -7,7 +7,7 @@ socket.on('connect',function(){
         createdAt:new Date().getTime()
     })
 });
-
+//on disconnect event
 socket.on('disconnect',function(){
     console.log("Disconnected from the Server.");
 });
