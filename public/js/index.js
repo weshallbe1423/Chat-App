@@ -1,13 +1,31 @@
-let socket=io();
-socket.on('connect',function(){
-    console.log("Connected to the Server.");
-    socket.emit('createMessage',{
-        from:"Vishal",
-        text:"Hi good things comming towards you lets capture those",
-        createdAt:new Date().getTime()
-    })
-});
+const socket=io();
+const chat = document.querySelector('.chat-form');
+const Input = document.querySelector('.chat-input');
+socket.on('chat', message => {
+  console.log('From server: ', message)
+})
 //on disconnect event
 socket.on('disconnect',function(){
     console.log("Disconnected from the Server.");
 });
+
+
+
+chat.addEventListener('submit', event => {
+  event.preventDefault()
+  socket.emit('chat', Input.value)
+  Input.value = ''
+})
+const chatWindow = document.querySelector('.chat-window')
+
+const renderMessage = message => {
+  const div = document.createElement('div')
+  div.classList.add('render-message')
+  div.innerText = message
+  chatWindow.appendChild(div)
+}
+
+socket.on('chat', message => {
+  // make sure to modify this
+  renderMessage(message)
+})

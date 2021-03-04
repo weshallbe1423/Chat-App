@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title></title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-</head>
-<body>
-    <p>welcome to chat app.</p>
+  <head>
+    <title>Chat app</title>
+    <link href="/css/style.css" rel="stylesheet"></link>
+  </head>
+  <body>
+    <div id="container">
+      <h1></h1>
+      <div id="chatSection">
+        <div class="chat-window"></div>
+        <form class="chat-form">
+          <label class="chat-label">
+            Enter a message:
+            <input type="text" class="chat-input" />
+          </label>
+          <input type="submit" class="chat-submit" value="Enter" />
+        </form>
+      </div>
+    </div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/index.js"></script>
-</body>
+  </body>
 </html>

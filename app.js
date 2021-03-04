@@ -12,13 +12,19 @@ let server=http.createServer(app);
 let io=socketIO(server);
 io.on('connection',(socket)=>{
     console.log("new user connected");
-    socket.on('createMessage',(message)=>{
-        console.log("CreateMessage",message);
+    socket.emit('message',{
+        text:'Welcome to chat Application.',
+        
+    })
+    socket.on('chat',(message)=>{
+        console.log("From Client:",message);
+        io.emit('chat',message);
     })
     socket.on('disconnect',()=>{
         console.log("User disconnected.");
     });
 });
+//server connection on port || 3000
 server.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);
 })
