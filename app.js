@@ -12,10 +12,6 @@ let server=http.createServer(app);
 let io=socketIO(server);
 io.on('connection',(socket)=>{
     console.log("new user connected");
-    socket.emit('message',{
-        text:'Welcome to chat Application.',
-        
-    })
     socket.on('chat',(message)=>{
         console.log("From Client:",message);
         io.emit('chat',message);
